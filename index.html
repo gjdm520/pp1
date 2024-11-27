@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索旅途 - 您的专属旅游助手</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">探索旅途</div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">首页</a>
+                <a href="spots/index.html">热门景点</a>
+                <a href="guides/index.html">旅游攻略</a>
+                <a href="blindbox/index.html">盲盒旅游</a>
+                <a href="reviews/index.html">用户评价</a>
+                <a href="about/index.html">关于我们</a>
+            </div>
+            <div class="user-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索景点、城市...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="auth-buttons">
+                    <button onclick="window.location.href='auth/login.html'" class="login-btn">登录</button>
+                    <button onclick="window.location.href='auth/register.html'" class="register-btn">注册</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 轮播图部分 -->
+        <section class="hero-section">
+            <div class="carousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide active">
+                        <div class="slide-content">
+                            <h2>黄山风景区</h2>
+                            <p>云海、奇松、怪石、温泉，一年四季美不胜收</p>
+                            <a href="spots/detail.html?id=1" class="slide-btn">立即探索</a>
+                        </div>
+                        <div class="slide-image" style="background-image: url('images/huangshan.jpg');"></div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-content">
+                            <h2>张家界国家森林公园</h2>
+                            <p>峰林奇观、溪流瀑布，让人叹为观止的自然奇迹</p>
+                            <a href="spots/detail.html?id=2" class="slide-btn">立即探索</a>
+                        </div>
+                        <div class="slide-image" style="background-image: url('images/zhangjiajie.jpg');"></div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-content">
+                            <h2>丽江古城</h2>
+                            <p>纳西风情、古街古巷，感受千年历史文化的魅力</p>
+                            <a href="spots/detail.html?id=3" class="slide-btn">立即探索</a>
+                        </div>
+                        <div class="slide-image" style="background-image: url('images/lijiang.jpg');"></div>
+                    </div>
+                </div>
+                <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-indicators">
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特色服务 -->
+        <section class="features-section">
+            <h2 class="section-title">我们的特色</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>精选景点</h3>
+                    <p>严选全球热门景点，提供详实攻略和实用建议</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-gift"></i>
+                    <h3>盲盒旅行</h3>
+                    <p>独特的盲盒玩法，带来意想不到的旅行惊喜</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>安全保障</h3>
+                    <p>全程保障您的旅行安全，提供24小时在线支持</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门景点 -->
+        <section class="hot-spots-section">
+            <div class="section-header">
+                <h2 class="section-title">热门景点</h2>
+                <a href="spots/index.html" class="view-all">查看全部 <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="spots-grid">
+                <!-- 景点卡片将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+        <!-- 精选攻略 -->
+        <section class="featured-guides-section">
+            <div class="section-header">
+                <h2 class="section-title">精选攻略</h2>
+                <a href="guides/index.html" class="view-all">查看全部 <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="guides-grid">
+                <!-- 攻略卡片将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+        <!-- 用户评价 -->
+        <section class="reviews-section">
+            <div class="section-header">
+                <h2 class="section-title">用户评价</h2>
+                <a href="reviews/index.html" class="view-all">查看全部 <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="reviews-slider">
+                <!-- 评价卡片将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+        <!-- 用户体验分享 -->
+        <section class="user-experience">
+            <div class="section-header">
+                <h2>用户体验分享</h2>
+                <p>来自真实用户的旅行故事</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="user-info">
+                        <img src="images/user1.jpg" alt="用户头像" class="user-avatar">
+                        <div class="user-meta">
+                            <h3>张先生</h3>
+                            <span>自由摄影师</span>
+                        </div>
+                    </div>
+                    <p class="experience-content">
+                        "通过这个平台找到了很多人少但景色绝佳的拍摄地点，完全改变了我的旅行方式。"
+                    </p>
+                    <div class="experience-photos">
+                        <img src="images/exp1.jpg" alt="体验照片">
+                        <img src="images/exp2.jpg" alt="体验照片">
+                    </div>
+                </div>
+                <!-- 更多体验卡片 -->
+            </div>
+        </section>
+
+        <!-- 热门目的地推荐 -->
+        <section class="destinations-section">
+            <div class="section-header">
+                <h2>热门目的地</h2>
+                <a href="spots/index.html" class="view-all">查看全部 <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="destinations-grid">
+                <!-- 将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+        <!-- 旅行灵感区域 -->
+        <section class="inspiration-section">
+            <div class="section-header">
+                <h2>旅行灵感</h2>
+            </div>
+            <div class="inspiration-content">
+                <div class="inspiration-categories">
+                    <div class="category-card">
+                        <img src="images/cultural.jpg" alt="文化之旅">
+                        <h3>文化之旅</h3>
+                        <p>探索千年文明，感受历史魅力</p>
+                    </div>
+                    <div class="category-card">
+                        <img src="images/nature.jpg" alt="自然探索">
+                        <h3>自然探索</h3>
+                        <p>亲近大自然，感受生态之美</p>
+                    </div>
+                    <div class="category-card">
+                        <img src="images/food.jpg" alt="美食之旅">
+                        <h3>美食之旅</h3>
+                        <p>品味地方特色，探寻舌尖美味</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>关于我们</h3>
+                <p>探索旅途致力于为您提供最优质的旅游体验</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="spots/index.html">热门景点</a></li>
+                    <li><a href="guides/index.html">旅游攻略</a></li>
+                    <li><a href="blindbox/index.html">盲盒旅游</a></li>
+                    <li><a href="about/index.html">关于我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <p><i class="fas fa-phone"></i> 400-123-4567</p>
+                <p><i class="fas fa-envelope"></i> contact@example.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>订阅更新</h3>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="输入您的邮箱">
+                    <button type="submit">订阅</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 探索旅途 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/carousel.js"></script>
+    <script src="scripts/home.js"></script>
+</body>
+</html> 

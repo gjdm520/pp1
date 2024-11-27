@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/admin/main.css">
+    <link rel="stylesheet" href="../styles/admin/users.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- 侧边栏复用 -->
+        <aside class="admin-sidebar">
+            <!-- ... 侧边栏内容 ... -->
+        </aside>
+
+        <main class="admin-main">
+            <!-- 顶部栏复用 -->
+            <header class="admin-header">
+                <!-- ... 顶部栏内容 ... -->
+            </header>
+
+            <!-- 用户管理内容 -->
+            <div class="users-content">
+                <!-- 操作栏 -->
+                <div class="action-bar">
+                    <div class="search-filters">
+                        <input type="text" placeholder="搜索用户..." class="search-input">
+                        <select class="role-filter">
+                            <option value="">所有角色</option>
+                            <option value="user">普通用户</option>
+                            <option value="guide">攻略作者</option>
+                            <option value="admin">管理员</option>
+                        </select>
+                        <select class="status-filter">
+                            <option value="">所有状态</option>
+                            <option value="active">正常</option>
+                            <option value="banned">已封禁</option>
+                            <option value="unverified">未验证</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="addUserBtn">
+                        <i class="fas fa-plus"></i> 添加用户
+                    </button>
+                </div>
+
+                <!-- 用户列表 -->
+                <div class="users-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th>用户信息</th>
+                                <th>角色</th>
+                                <th>注册时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 用户数据将通过JavaScript动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 分页控件 -->
+                <div class="pagination">
+                    <button class="btn" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left"></i> 上一页
+                    </button>
+                    <div class="page-numbers">
+                        <!-- 页码将通过JavaScript动态生成 -->
+                    </div>
+                    <button class="btn" id="nextPage">
+                        下一页 <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 添加/编辑用户弹窗 -->
+    <div class="modal" id="userModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>添加用户</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>邮箱</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>手机号</label>
+                        <input type="tel" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label>角色</label>
+                        <select name="role" required>
+                            <option value="user">普通用户</option>
+                            <option value="guide">攻略作者</option>
+                            <option value="admin">管理员</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>状态</label>
+                        <select name="status" required>
+                            <option value="active">正常</option>
+                            <option value="banned">封禁</option>
+                            <option value="unverified">未验证</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" id="saveUser">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 用户详情弹窗 -->
+    <div class="modal" id="userDetailModal">
+        <div class="modal-content">
+            <!-- 用户详情内容将通过JavaScript动态加载 -->
+        </div>
+    </div>
+
+    <script src="../scripts/admin/users.js"></script>
+</body>
+</html> 

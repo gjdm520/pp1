@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热门景点 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/spots.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="../index.html">
+                    <div class="logo-text">探索旅途</div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">首页</a>
+                <a href="index.html" class="active">热门景点</a>
+                <a href="../guides/index.html">旅游攻略</a>
+                <a href="../blindbox/index.html">盲盒旅游</a>
+                <a href="../reviews/index.html">用户评价</a>
+                <a href="../about/index.html">关于我们</a>
+            </div>
+            <div class="user-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索景点、城市...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="spots-page">
+        <!-- 筛选器部分 -->
+        <aside class="filters">
+            <div class="filter-group">
+                <h3>目的地</h3>
+                <div class="filter-options">
+                    <label><input type="checkbox" value="domestic"> 国内游</label>
+                    <label><input type="checkbox" value="overseas"> 境外游</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>景点类型</h3>
+                <div class="filter-options">
+                    <label><input type="checkbox" value="natural"> 自然风光</label>
+                    <label><input type="checkbox" value="cultural"> 人文古迹</label>
+                    <label><input type="checkbox" value="leisure"> 休闲娱乐</label>
+                    <label><input type="checkbox" value="adventure"> 探险体验</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>价格区间</h3>
+                <div class="price-range">
+                    <input type="number" id="minPrice" placeholder="最低价">
+                    <span>-</span>
+                    <input type="number" id="maxPrice" placeholder="最高价">
+                </div>
+                <input type="range" id="priceRange" min="0" max="1000" step="50">
+            </div>
+
+            <div class="filter-group">
+                <h3>游玩季节</h3>
+                <div class="filter-options">
+                    <label><input type="checkbox" value="spring"> 春季</label>
+                    <label><input type="checkbox" value="summer"> 夏季</label>
+                    <label><input type="checkbox" value="autumn"> 秋季</label>
+                    <label><input type="checkbox" value="winter"> 冬季</label>
+                </div>
+            </div>
+
+            <button class="reset-filters">重置筛选</button>
+        </aside>
+
+        <!-- 主要内容部分 -->
+        <section class="spots-content">
+            <div class="spots-header">
+                <div class="spots-count">
+                    找到 <strong>128</strong> 个景点
+                </div>
+                <div class="spots-sort">
+                    <select>
+                        <option value="rating">评分最高</option>
+                        <option value="popularity">人气最高</option>
+                        <option value="price-asc">价格从低到高</option>
+                        <option value="price-desc">价格从高到低</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="spots-grid">
+                <!-- 景点卡片将通过JavaScript动态加载 -->
+            </div>
+
+            <!-- 分页 -->
+            <div class="pagination">
+                <button class="prev-page" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                    上一页
+                </button>
+                <div class="page-numbers">
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>...</span>
+                    <span>10</span>
+                </div>
+                <button class="next-page">
+                    下一页
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <!-- 复用首页的页脚 -->
+    </footer>
+
+    <script src="../scripts/spots.js"></script>
+</body>
+</html> 

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅游网站项目文档</title>
+    <style>
+        /* 文档样式 */
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .note {
+            background: #e1f5fe;
+            padding: 1rem;
+            border-left: 4px solid #03a9f4;
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background: #fff3e0;
+            padding: 1rem;
+            border-left: 4px solid #ff9800;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>旅游网站项目文档</h1>
+
+    <h2>1. 项目概述</h2>
+    <p>这是一个现代化的旅游网站项目，包含以下主要功能：</p>
+    <ul>
+        <li>用户认证（登录/注册）</li>
+        <li>景点展示和搜索</li>
+        <li>旅游攻略</li>
+        <li>用户评价系统</li>
+        <li>盲盒旅游功能</li>
+        <li>响应式设计</li>
+    </ul>
+
+    <h2>2. 技术栈</h2>
+    <ul>
+        <li>前端：HTML5, CSS3, JavaScript (ES6+)</li>
+        <li>后端：Node.js, Express</li>
+        <li>数据库：MongoDB</li>
+        <li>部署：PM2, Nginx</li>
+    </ul>
+
+    <h2>3. 项目结构</h2>
+    <div class="code-block">
+        <pre>
+travel-website/
+├── auth/                 # 认证相关页面
+│   ├── login.html
+│   └── register.html
+├── spots/                # 景点相关页面
+│   ├── index.html
+│   └── detail.html
+├── guides/              # 攻略相关页面
+│   └── index.html
+├── reviews/             # 评价相关页面
+│   └── index.html
+├── blindbox/            # 盲盒旅游页面
+│   └── index.html
+├── about/               # 关于我们页面
+│   └── index.html
+├── styles/              # 样式文件
+│   ├── main.css
+│   ├── auth.css
+│   ├── spots.css
+│   └── ...
+├── scripts/             # JavaScript文件
+│   ├── auth.js
+│   ├── carousel.js
+│   └── ...
+├── server/              # 后端文件
+│   ├── app.js
+│   ├── routes/
+│   └── models/
+└── public/              # 静态资源
+    ├── images/
+    └── icons/
+        </pre>
+    </div>
+
+    <h2>4. 页面功能说明</h2>
+
+    <h3>4.1 首页 (index.html)</h3>
+    <ul>
+        <li>响应式导航栏</li>
+        <li>轮播图展示</li>
+        <li>热门景点推荐</li>
+        <li>搜索功能</li>
+        <li>登录/注册入口</li>
+    </ul>
+
+    <h3>4.2 认证系统</h3>
+    <ul>
+        <li>用户登录</li>
+        <li>用户注册</li>
+        <li>手机验证码</li>
+        <li>密码强度检测</li>
+        <li>记住密码功能</li>
+        <li>第三方登录</li>
+    </ul>
+
+    <h3>4.3 景点展示</h3>
+    <ul>
+        <li>景点列表</li>
+        <li>筛选功能</li>
+        <li>排序功能</li>
+        <li>分页功能</li>
+        <li>景点详情</li>
+    </ul>
+
+    <h3>4.4 盲盒旅游</h3>
+    <ul>
+        <li>盲盒类型选择</li>
+        <li>开盒动画</li>
+        <li>结果展示</li>
+        <li>预订功能</li>
+    </ul>
+
+    <h2>5. 关键代码说明</h2>
+
+    <h3>5.1 导航栏实现</h3>
+    <div class="code-block">
+        <pre>
+// HTML结构
+&lt;nav class="main-nav"&gt;
+    &lt;div class="logo"&gt;...&lt;/div&gt;
+    &lt;div class="nav-links"&gt;...&lt;/div&gt;
+    &lt;div class="user-actions"&gt;...&lt;/div&gt;
+&lt;/nav&gt;
+
+// CSS样式
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--bg-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+        </pre>
+    </div>
+
+    <h3>5.2 轮播图实现</h3>
+    <div class="code-block">
+        <pre>
+class Carousel {
+    constructor(element) {
+        this.element = element;
+        this.slides = element.querySelectorAll('.carousel-slide');
+        this.currentSlide = 0;
+        this.init();
+    }
+    // ...其他实现代码
+}
+        </pre>
+    </div>
+
+    <h2>6. 部署说明</h2>
+    <div class="note">
+        <h3>环境要求：</h3>
+        <ul>
+            <li>Node.js 16.x+</li>
+            <li>MongoDB 4.4+</li>
+            <li>PM2</li>
+            <li>Nginx</li>
+        </ul>
+    </div>
+
+    <h3>部署步骤：</h3>
+    <ol>
+        <li>安装依赖：npm install</li>
+        <li>配置环境变量：修改 .env 文件</li>
+        <li>启动MongoDB服务</li>
+        <li>使用PM2启动Node服务</li>
+        <li>配置Nginx反向代理</li>
+    </ol>
+
+    <h2>7. 注意事项</h2>
+    <div class="warning">
+        <ul>
+            <li>确保MongoDB服务正常运行</li>
+            <li>检查端口占用情况</li>
+            <li>注意文件权限设置</li>
+            <li>定期备份数据库</li>
+        </ul>
+    </div>
+
+</body>
+</html> 

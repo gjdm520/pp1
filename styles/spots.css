@@ -1,0 +1,501 @@
+.spot-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--gray);
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumb i {
+    font-size: 0.8rem;
+}
+
+.spot-header {
+    margin-bottom: 2rem;
+}
+
+.spot-name {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.spot-meta {
+    display: flex;
+    gap: 2rem;
+    color: var(--gray);
+}
+
+.spot-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.spot-meta i {
+    color: var(--primary-color);
+}
+
+.spot-gallery {
+    margin-bottom: 2rem;
+}
+
+.main-image {
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.main-image .placeholder-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+}
+
+.thumbnail {
+    height: 80px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.thumbnail:hover {
+    transform: translateY(-2px);
+}
+
+.thumbnail.active {
+    border: 2px solid var(--primary-color);
+}
+
+.spot-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+}
+
+.spot-sidebar {
+    position: sticky;
+    top: 2rem;
+}
+
+.price-card, .contact-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.price-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.price-header h3 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.price {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.price-details {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.price-details li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.price-details li:last-child {
+    border-bottom: none;
+}
+
+.price-details i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.book-btn, .collect-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.book-btn {
+    background: var(--primary-color);
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.book-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.collect-btn {
+    background: white;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.collect-btn:hover {
+    background: #f8f9fa;
+}
+
+.contact-card h3 {
+    margin-bottom: 1rem;
+}
+
+.contact-card ul {
+    list-style: none;
+}
+
+.contact-card li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    color: var(--gray);
+}
+
+.contact-card i {
+    color: var(--primary-color);
+}
+
+.spot-main section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.spot-main h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.content p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    color: var(--gray);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.feature {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.tips-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.tip i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.tip-content h4 {
+    margin-bottom: 0.5rem;
+}
+
+.tip-content p {
+    color: var(--gray);
+}
+
+.reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.write-review-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.write-review-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .spot-content {
+        grid-template-columns: 1fr;
+    }
+
+    .spot-sidebar {
+        position: static;
+        order: -1;
+    }
+
+    .main-image {
+        height: 300px;
+    }
+
+    .features-grid,
+    .tips-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.spots-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+}
+
+/* 筛选器样式 */
+.filters {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.filter-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.price-range {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.price-range input {
+    width: 80px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#priceRange {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.reset-filters {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.reset-filters:hover {
+    background: #2980b9;
+}
+
+/* 主要内容样式 */
+.spots-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.spots-count {
+    color: var(--gray);
+}
+
+.spots-count strong {
+    color: var(--text-color);
+}
+
+.spots-sort select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.spots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* 分页样式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pagination button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    background: white;
+    color: var(--text-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: var(--primary-color);
+    color: white;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.page-numbers span {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.page-numbers span.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .spots-page {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        margin-bottom: 1rem;
+    }
+
+    .spots-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .spots-sort select {
+        width: 100%;
+    }
+} 

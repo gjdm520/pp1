@@ -1,0 +1,149 @@
+/* 系统设置页面样式 */
+.settings-content {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+}
+
+/* 设置导航 */
+.settings-nav {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.settings-nav a {
+    display: block;
+    padding: 0.8rem 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.settings-nav a:hover {
+    background: #f8f9fa;
+}
+
+.settings-nav a.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* 设置表单 */
+.settings-forms {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.settings-section {
+    display: none;
+}
+
+.settings-section.active {
+    display: block;
+}
+
+.settings-section h2 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.settings-form {
+    max-width: 800px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Logo上传 */
+.logo-upload {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-upload img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+/* 复选框组 */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* 表单操作 */
+.form-actions {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .settings-content {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-nav {
+        display: flex;
+        overflow-x: auto;
+        padding: 0.5rem;
+    }
+
+    .settings-nav a {
+        white-space: nowrap;
+    }
+
+    .settings-forms {
+        padding: 1rem;
+    }
+
+    .logo-upload {
+        flex-direction: column;
+    }
+} 

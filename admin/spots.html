@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>景点管理 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/admin/main.css">
+    <link rel="stylesheet" href="../styles/admin/spots.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- 侧边栏复用 -->
+        <aside class="admin-sidebar">
+            <!-- ... 侧边栏内容 ... -->
+        </aside>
+
+        <main class="admin-main">
+            <!-- 顶部栏复用 -->
+            <header class="admin-header">
+                <!-- ... 顶部栏内容 ... -->
+            </header>
+
+            <!-- 景点管理内容 -->
+            <div class="spots-content">
+                <!-- 操作栏 -->
+                <div class="action-bar">
+                    <div class="search-filters">
+                        <input type="text" placeholder="搜索景点..." class="search-input">
+                        <select class="category-filter">
+                            <option value="">所有类别</option>
+                            <option value="natural">自然风光</option>
+                            <option value="cultural">人文古迹</option>
+                            <option value="leisure">休闲娱乐</option>
+                            <option value="adventure">探险体验</option>
+                        </select>
+                        <select class="location-filter">
+                            <option value="">所有地区</option>
+                            <!-- 地区选项将通过JavaScript动态加载 -->
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="addSpotBtn">
+                        <i class="fas fa-plus"></i> 添加景点
+                    </button>
+                </div>
+
+                <!-- 景点列表 -->
+                <div class="spots-grid">
+                    <!-- 景点卡片将通过JavaScript动态加载 -->
+                </div>
+
+                <!-- 分页控件 -->
+                <div class="pagination">
+                    <button class="btn" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left"></i> 上一页
+                    </button>
+                    <div class="page-numbers">
+                        <!-- 页码将通过JavaScript动态生成 -->
+                    </div>
+                    <button class="btn" id="nextPage">
+                        下一页 <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 添加/编辑景点弹窗 -->
+    <div class="modal" id="spotModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>添加景点</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="spotForm">
+                    <div class="form-group">
+                        <label>景点名称</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>类别</label>
+                        <select name="category" required>
+                            <option value="natural">自然风光</option>
+                            <option value="cultural">人文古迹</option>
+                            <option value="leisure">休闲娱乐</option>
+                            <option value="adventure">探险体验</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>所在地区</label>
+                        <div class="location-inputs">
+                            <select name="province" required>
+                                <option value="">选择省份</option>
+                                <!-- 省份选项将通过JavaScript动态加载 -->
+                            </select>
+                            <select name="city" required>
+                                <option value="">选择城市</option>
+                                <!-- 城市选项将通过JavaScript动态加载 -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>详细地址</label>
+                        <input type="text" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label>门票价格</label>
+                        <div class="price-inputs">
+                            <input type="number" name="adultPrice" placeholder="成人票" required>
+                            <input type="number" name="childPrice" placeholder="儿童票">
+                            <input type="number" name="seniorPrice" placeholder="老人票">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>开放时间</label>
+                        <div class="time-inputs">
+                            <input type="time" name="openTime" required>
+                            <span>至</span>
+                            <input type="time" name="closeTime" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>景点介绍</label>
+                        <textarea name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>上传图片</label>
+                        <div class="image-upload">
+                            <input type="file" multiple accept="image/*" id="spotImages">
+                            <div class="image-preview">
+                                <!-- 图片预览将通过JavaScript动态生成 -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" id="saveSpot">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 景点详情弹窗 -->
+    <div class="modal" id="spotDetailModal">
+        <div class="modal-content">
+            <!-- 景点详情内容将通过JavaScript动态加载 -->
+        </div>
+    </div>
+
+    <script src="../scripts/admin/spots.js"></script>
+</body>
+</html> 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统设置 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/admin/main.css">
+    <link rel="stylesheet" href="../styles/admin/settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- 侧边栏复用 -->
+        <aside class="admin-sidebar">
+            <!-- ... 侧边栏内容 ... -->
+        </aside>
+
+        <main class="admin-main">
+            <!-- 顶部栏复用 -->
+            <header class="admin-header">
+                <!-- ... 顶部栏内容 ... -->
+            </header>
+
+            <!-- 系统设置内容 -->
+            <div class="settings-content">
+                <!-- 设置导航 -->
+                <div class="settings-nav">
+                    <a href="#basic" class="active">基本设置</a>
+                    <a href="#security">安全设置</a>
+                    <a href="#content">内容设置</a>
+                    <a href="#payment">支付设置</a>
+                    <a href="#notification">通知设置</a>
+                    <a href="#backup">备份设置</a>
+                </div>
+
+                <!-- 设置表单 -->
+                <div class="settings-forms">
+                    <!-- 基本设置 -->
+                    <section id="basic" class="settings-section active">
+                        <h2>基本设置</h2>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>网站名称</label>
+                                <input type="text" name="siteName" value="探索旅途">
+                            </div>
+                            <div class="form-group">
+                                <label>网站描述</label>
+                                <textarea name="siteDescription" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>网站Logo</label>
+                                <div class="logo-upload">
+                                    <img src="" alt="网站Logo" id="logoPreview">
+                                    <input type="file" accept="image/*" id="logoInput">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>联系邮箱</label>
+                                <input type="email" name="contactEmail">
+                            </div>
+                            <div class="form-group">
+                                <label>客服电话</label>
+                                <input type="tel" name="contactPhone">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">保存设置</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- 安全设置 -->
+                    <section id="security" class="settings-section">
+                        <h2>安全设置</h2>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>密码策略</label>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" name="passwordPolicy" value="length">
+                                        最小长度8位
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="passwordPolicy" value="complex">
+                                        必须包含字母和数字
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="passwordPolicy" value="special">
+                                        必须包含特殊字符
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>登录安全</label>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" name="loginSecurity" value="captcha">
+                                        启用验证码
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="loginSecurity" value="limit">
+                                        登录失败限制
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">保存设置</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- 内容设置 -->
+                    <section id="content" class="settings-section">
+                        <h2>内容设置</h2>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>内容审核</label>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" name="contentReview" value="guide">
+                                        攻略需要审核
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="contentReview" value="review">
+                                        评论需要审核
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>敏感词过滤</label>
+                                <textarea name="sensitiveWords" rows="4" placeholder="每行一个敏感词"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">保存设置</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- 支付设置 -->
+                    <section id="payment" class="settings-section">
+                        <h2>支付设置</h2>
+                        <form class="settings-form">
+                            <!-- 支付宝设置 -->
+                            <div class="form-group">
+                                <label>支付宝配置</label>
+                                <input type="text" name="alipayAppId" placeholder="AppID">
+                                <input type="text" name="alipayPublicKey" placeholder="支付宝公钥">
+                                <input type="text" name="alipayPrivateKey" placeholder="商户私钥">
+                            </div>
+                            <!-- 微信支付设置 -->
+                            <div class="form-group">
+                                <label>微信支付配置</label>
+                                <input type="text" name="wechatAppId" placeholder="AppID">
+                                <input type="text" name="wechatMchId" placeholder="商户号">
+                                <input type="text" name="wechatKey" placeholder="API密钥">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">保存设置</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- 其他设置部分... -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../scripts/admin/settings.js"></script>
+</body>
+</html> 

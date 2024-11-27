@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅游攻略 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/guides.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="/">
+                    <div class="placeholder-image" style="width: 150px; height: 50px; background: linear-gradient(45deg, #3498db, #2ecc71);"></div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/spots">热门景点</a>
+                <a href="/guides" class="active">旅游攻略</a>
+                <a href="/blindbox">盲盒旅游</a>
+                <a href="/reviews">用户评价</a>
+                <a href="/about">关于我们</a>
+            </div>
+            <div class="user-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索攻略...">
+                    <button type="submit">搜索</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="guides-page">
+        <section class="guides-banner">
+            <div class="banner-content">
+                <h1>探索精彩旅程</h1>
+                <p>发现来自全球旅行者的独特见解和专业建议</p>
+                <button class="create-guide-btn" onclick="location.href='create.html'">
+                    <i class="fas fa-pen"></i> 写攻略
+                </button>
+            </div>
+        </section>
+
+        <section class="guides-categories">
+            <div class="category-tabs">
+                <a href="#" class="active" data-category="all">全部攻略</a>
+                <a href="#" data-category="domestic">国内游</a>
+                <a href="#" data-category="overseas">境外游</a>
+                <a href="#" data-category="food">美食攻略</a>
+                <a href="#" data-category="photography">摄影攻略</a>
+                <a href="#" data-category="budget">省钱攻略</a>
+            </div>
+        </section>
+
+        <div class="guides-container">
+            <aside class="guides-filters">
+                <div class="filter-group">
+                    <h3>行程天数</h3>
+                    <div class="filter-options">
+                        <label><input type="checkbox" value="1-3"> 1-3天</label>
+                        <label><input type="checkbox" value="4-7"> 4-7天</label>
+                        <label><input type="checkbox" value="8-14"> 8-14天</label>
+                        <label><input type="checkbox" value="15+"> 15天以上</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>预算范围</h3>
+                    <div class="filter-options">
+                        <label><input type="checkbox" value="0-3000"> 3000以下</label>
+                        <label><input type="checkbox" value="3000-6000"> 3000-6000</label>
+                        <label><input type="checkbox" value="6000-10000"> 6000-10000</label>
+                        <label><input type="checkbox" value="10000+"> 10000以上</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>适合季节</h3>
+                    <div class="filter-options">
+                        <label><input type="checkbox" value="spring"> 春季</label>
+                        <label><input type="checkbox" value="summer"> 夏季</label>
+                        <label><input type="checkbox" value="autumn"> 秋季</label>
+                        <label><input type="checkbox" value="winter"> 冬季</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>出行方式</h3>
+                    <div class="filter-options">
+                        <label><input type="checkbox" value="self"> 自由行</label>
+                        <label><input type="checkbox" value="group"> 跟团游</label>
+                        <label><input type="checkbox" value="customized"> 定制游</label>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="guides-content">
+                <div class="guides-toolbar">
+                    <div class="guides-count">
+                        共找到 <strong>256</strong> 篇攻略
+                    </div>
+                    <div class="guides-sort">
+                        <select>
+                            <option value="newest">最新发布</option>
+                            <option value="hottest">最热门</option>
+                            <option value="most-liked">点赞最多</option>
+                            <option value="most-viewed">浏览最多</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="guides-list">
+                    <!-- 攻略卡片将通过JavaScript动态加载 -->
+                </div>
+
+                <div class="guides-pagination">
+                    <button class="prev-page" disabled>
+                        <i class="fas fa-chevron-left"></i> 上一页
+                    </button>
+                    <div class="page-numbers">
+                        <span class="active">1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>...</span>
+                        <span>10</span>
+                    </div>
+                    <button class="next-page">
+                        下一页 <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <section class="featured-authors">
+            <h2>推荐作者</h2>
+            <div class="authors-list">
+                <!-- 作者卡片将通过JavaScript动态加载 -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <!-- 复用页脚 -->
+    </footer>
+
+    <script src="../scripts/guides.js"></script>
+</body>
+</html> 

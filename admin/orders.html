@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单管理 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/admin/main.css">
+    <link rel="stylesheet" href="../styles/admin/orders.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- 侧边栏复用 -->
+        <aside class="admin-sidebar">
+            <!-- ... 侧边栏内容 ... -->
+        </aside>
+
+        <main class="admin-main">
+            <!-- 顶部栏复用 -->
+            <header class="admin-header">
+                <!-- ... 顶部栏内容 ... -->
+            </header>
+
+            <!-- 订单管理内容 -->
+            <div class="orders-content">
+                <!-- 统计卡片 -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>今日订单</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-yuan-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>今日收入</h3>
+                            <p class="stat-value">¥0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>待处理退款</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 操作栏 -->
+                <div class="action-bar">
+                    <div class="search-filters">
+                        <input type="text" placeholder="搜索订单号/用户..." class="search-input">
+                        <select class="type-filter">
+                            <option value="">所有类型</option>
+                            <option value="spot">景点门票</option>
+                            <option value="guide">攻略购买</option>
+                            <option value="blindbox">盲盒旅行</option>
+                        </select>
+                        <select class="status-filter">
+                            <option value="">所有状态</option>
+                            <option value="pending">待支付</option>
+                            <option value="paid">已支付</option>
+                            <option value="completed">已完成</option>
+                            <option value="refunding">退款中</option>
+                            <option value="refunded">已退款</option>
+                            <option value="cancelled">已取消</option>
+                        </select>
+                        <div class="date-range">
+                            <input type="date" class="start-date">
+                            <span>至</span>
+                            <input type="date" class="end-date">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="exportBtn">
+                        <i class="fas fa-download"></i> 导出数据
+                    </button>
+                </div>
+
+                <!-- 订单列表 -->
+                <div class="orders-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>订单号</th>
+                                <th>用户信息</th>
+                                <th>订单类型</th>
+                                <th>订单金额</th>
+                                <th>支付方式</th>
+                                <th>订单状态</th>
+                                <th>下单时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 订单数据将通过JavaScript动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 分页控件 -->
+                <div class="pagination">
+                    <button class="btn" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left"></i> 上一页
+                    </button>
+                    <div class="page-numbers">
+                        <!-- 页码将通过JavaScript动态生成 -->
+                    </div>
+                    <button class="btn" id="nextPage">
+                        下一页 <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 订单详情弹窗 -->
+    <div class="modal" id="orderDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>订单详情</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- 订单详情内容将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 退款处理弹窗 -->
+    <div class="modal" id="refundModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>退款处理</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="refundForm">
+                    <div class="form-group">
+                        <label>退款金额</label>
+                        <input type="number" name="refundAmount" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>退款原因</label>
+                        <input type="text" name="refundReason" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>处理结果</label>
+                        <select name="refundResult" required>
+                            <option value="approved">同意退款</option>
+                            <option value="rejected">拒绝退款</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>处理备注</label>
+                        <textarea name="refundComment" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" id="submitRefund">确认处理</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/admin/orders.js"></script>
+</body>
+</html> 

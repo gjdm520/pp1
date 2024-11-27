@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评论管理 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/admin/main.css">
+    <link rel="stylesheet" href="../styles/admin/reviews.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- 侧边栏复用 -->
+        <aside class="admin-sidebar">
+            <!-- ... 侧边栏内容 ... -->
+        </aside>
+
+        <main class="admin-main">
+            <!-- 顶部栏复用 -->
+            <header class="admin-header">
+                <!-- ... 顶部栏内容 ... -->
+            </header>
+
+            <!-- 评论管理内容 -->
+            <div class="reviews-content">
+                <!-- 统计卡片 -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>总评论数</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>待审核</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>平均评分</h3>
+                            <p class="stat-value">0.0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 操作栏 -->
+                <div class="action-bar">
+                    <div class="search-filters">
+                        <input type="text" placeholder="搜索评论内容/用户..." class="search-input">
+                        <select class="type-filter">
+                            <option value="">所有类型</option>
+                            <option value="spot">景点评论</option>
+                            <option value="guide">攻略评论</option>
+                            <option value="blindbox">盲盒评论</option>
+                        </select>
+                        <select class="status-filter">
+                            <option value="">所有状态</option>
+                            <option value="pending">待审核</option>
+                            <option value="approved">已通过</option>
+                            <option value="rejected">已拒绝</option>
+                        </select>
+                        <select class="rating-filter">
+                            <option value="">所有评分</option>
+                            <option value="5">5星</option>
+                            <option value="4">4星</option>
+                            <option value="3">3星</option>
+                            <option value="2">2星</option>
+                            <option value="1">1星</option>
+                        </select>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="batchApproveBtn">
+                            <i class="fas fa-check"></i> 批量通过
+                        </button>
+                        <button class="btn btn-danger" id="batchRejectBtn">
+                            <i class="fas fa-times"></i> 批量拒绝
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 评论列表 -->
+                <div class="reviews-list">
+                    <!-- 评论卡片将通过JavaScript动态加载 -->
+                </div>
+
+                <!-- 分页控件 -->
+                <div class="pagination">
+                    <button class="btn" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left"></i> 上一页
+                    </button>
+                    <div class="page-numbers">
+                        <!-- 页码将通过JavaScript动态生成 -->
+                    </div>
+                    <button class="btn" id="nextPage">
+                        下一页 <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 评论审核弹窗 -->
+    <div class="modal" id="reviewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>评论审核</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="review-detail">
+                    <!-- 评论详情将通过JavaScript动态加载 -->
+                </div>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label>审核结果</label>
+                        <select name="reviewResult" required>
+                            <option value="approved">通过</option>
+                            <option value="rejected">拒绝</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>审核备注</label>
+                        <textarea name="reviewComment" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" id="submitReview">提交审核</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/admin/reviews.js"></script>
+</body>
+</html> 

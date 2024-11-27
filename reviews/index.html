@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户评价 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/reviews.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="../index.html">
+                    <div class="logo-text">探索旅途</div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">首页</a>
+                <a href="../spots/index.html">热门景点</a>
+                <a href="../guides/index.html">旅游攻略</a>
+                <a href="../blindbox/index.html">盲盒旅游</a>
+                <a href="index.html" class="active">用户评价</a>
+                <a href="../about/index.html">关于我们</a>
+            </div>
+            <div class="user-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索评价...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="reviews-page">
+        <!-- 评价统计 -->
+        <section class="reviews-stats">
+            <div class="stats-card">
+                <h3>总体评分</h3>
+                <div class="rating-big">4.8</div>
+                <div class="rating-stars">★★★★★</div>
+                <div class="total-reviews">基于 2,345 条评价</div>
+            </div>
+            <div class="rating-distribution">
+                <div class="rating-bar">
+                    <span>5星</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 75%"></div>
+                    </div>
+                    <span>75%</span>
+                </div>
+                <div class="rating-bar">
+                    <span>4星</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 15%"></div>
+                    </div>
+                    <span>15%</span>
+                </div>
+                <div class="rating-bar">
+                    <span>3星</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 7%"></div>
+                    </div>
+                    <span>7%</span>
+                </div>
+                <div class="rating-bar">
+                    <span>2星</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 2%"></div>
+                    </div>
+                    <span>2%</span>
+                </div>
+                <div class="rating-bar">
+                    <span>1星</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 1%"></div>
+                    </div>
+                    <span>1%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 评价筛选 -->
+        <section class="reviews-filter">
+            <div class="filter-tags">
+                <button class="tag active">全部评价</button>
+                <button class="tag">最新评价</button>
+                <button class="tag">好评</button>
+                <button class="tag">差评</button>
+                <button class="tag">有图片</button>
+            </div>
+            <select class="sort-select">
+                <option value="newest">最新优先</option>
+                <option value="rating-high">评分从高到低</option>
+                <option value="rating-low">评分从低到高</option>
+            </select>
+        </section>
+
+        <!-- 评价列表 -->
+        <section class="reviews-list">
+            <!-- 评价卡片示例 -->
+            <article class="review-card">
+                <div class="review-header">
+                    <div class="reviewer">
+                        <div class="avatar" style="background: linear-gradient(45deg, #3498db, #2ecc71);"></div>
+                        <div class="reviewer-info">
+                            <h4>旅行者小明</h4>
+                            <div class="review-meta">
+                                <span class="rating">★★★★★ 5.0</span>
+                                <span class="date">2024-02-20</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spot-name">黄山风景区</div>
+                </div>
+                <div class="review-content">
+                    <p>景色非常壮观，云海、日出都看到了，住宿条件也不错，就是价格稍贵。建议春秋两季前往，天气最适宜。导游服务很专业，讲解很详细。</p>
+                    <div class="review-images">
+                        <div class="image" style="background: linear-gradient(45deg, #1abc9c, #3498db);"></div>
+                        <div class="image" style="background: linear-gradient(45deg, #e74c3c, #f39c12);"></div>
+                        <div class="image" style="background: linear-gradient(45deg, #9b59b6, #3498db);"></div>
+                    </div>
+                </div>
+                <div class="review-footer">
+                    <button class="like-btn">
+                        <span>👍 有帮助 (23)</span>
+                    </button>
+                    <button class="comment-btn">
+                        <span>💬 评论 (5)</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- 更多评价卡片... -->
+        </section>
+
+        <!-- 分页 -->
+        <div class="pagination">
+            <button class="prev-page" disabled>
+                <i class="fas fa-chevron-left"></i>
+                上一页
+            </button>
+            <div class="page-numbers">
+                <span class="active">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>...</span>
+                <span>10</span>
+            </div>
+            <button class="next-page">
+                下一页
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <!-- 复用页脚 -->
+    </footer>
+
+    <script src="../scripts/reviews.js"></script>
+</body>
+</html> 

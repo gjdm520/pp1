@@ -1,0 +1,190 @@
+/* 攻略管理页面样式 */
+.guides-content {
+    padding: 2rem;
+}
+
+/* 操作栏 */
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.search-filters {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-input {
+    width: 300px;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.category-filter, .status-filter {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    min-width: 150px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* 攻略表格 */
+.guides-table {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background: #f8f9fa;
+    font-weight: 600;
+}
+
+.guide-title {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.author-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 状态标签 */
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.status-badge.published {
+    background: #e8f7ef;
+    color: var(--success-color);
+}
+
+.status-badge.draft {
+    background: #f1f3f5;
+    color: var(--gray-color);
+}
+
+.status-badge.pending {
+    background: #fff3e0;
+    color: var(--warning-color);
+}
+
+.status-badge.rejected {
+    background: #fbe9e7;
+    color: var(--danger-color);
+}
+
+/* 操作按钮 */
+.action-btns {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    padding: 0.4rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.action-btn:hover {
+    background: #f0f0f0;
+}
+
+/* 审核弹窗 */
+.guide-preview {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.review-form {
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .guides-content {
+        padding: 1rem;
+    }
+
+    .action-bar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .search-filters {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .search-input,
+    .category-filter,
+    .status-filter {
+        width: 100%;
+    }
+
+    .guides-table {
+        overflow-x: auto;
+    }
+
+    .action-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+} 

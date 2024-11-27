@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>攻略管理 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/admin/main.css">
+    <link rel="stylesheet" href="../styles/admin/guides.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- 侧边栏复用 -->
+        <aside class="admin-sidebar">
+            <!-- ... 侧边栏内容 ... -->
+        </aside>
+
+        <main class="admin-main">
+            <!-- 顶部栏复用 -->
+            <header class="admin-header">
+                <!-- ... 顶部栏内容 ... -->
+            </header>
+
+            <!-- 攻略管理内容 -->
+            <div class="guides-content">
+                <!-- 操作栏 -->
+                <div class="action-bar">
+                    <div class="search-filters">
+                        <input type="text" placeholder="搜索攻略..." class="search-input">
+                        <select class="category-filter">
+                            <option value="">所有类别</option>
+                            <option value="domestic">国内游</option>
+                            <option value="overseas">境外游</option>
+                            <option value="food">美食攻略</option>
+                            <option value="photography">摄影攻略</option>
+                            <option value="budget">省钱攻略</option>
+                        </select>
+                        <select class="status-filter">
+                            <option value="">所有状态</option>
+                            <option value="published">已发布</option>
+                            <option value="draft">草稿</option>
+                            <option value="pending">待审核</option>
+                            <option value="rejected">已拒绝</option>
+                        </select>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="batchApproveBtn">
+                            <i class="fas fa-check"></i> 批量通过
+                        </button>
+                        <button class="btn btn-danger" id="batchRejectBtn">
+                            <i class="fas fa-times"></i> 批量拒绝
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 攻略列表 -->
+                <div class="guides-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAll"></th>
+                                <th>标题</th>
+                                <th>作者</th>
+                                <th>类别</th>
+                                <th>状态</th>
+                                <th>发布时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 攻略数据将通过JavaScript动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 分页控件 -->
+                <div class="pagination">
+                    <button class="btn" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left"></i> 上一页
+                    </button>
+                    <div class="page-numbers">
+                        <!-- 页码将通过JavaScript动态生成 -->
+                    </div>
+                    <button class="btn" id="nextPage">
+                        下一页 <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 攻略审核弹窗 -->
+    <div class="modal" id="reviewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>攻略审核</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="guide-preview">
+                    <!-- 攻略预览内容将通过JavaScript动态加载 -->
+                </div>
+                <div class="review-form">
+                    <div class="form-group">
+                        <label>审核结果</label>
+                        <select name="reviewResult" required>
+                            <option value="approved">通过</option>
+                            <option value="rejected">拒绝</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>审核意见</label>
+                        <textarea name="reviewComment" rows="4" placeholder="请输入审核意见..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" id="submitReview">提交审核</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/admin/guides.js"></script>
+</body>
+</html> 

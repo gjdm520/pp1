@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理后台 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/admin/main.css">
+    <link rel="stylesheet" href="../styles/admin/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- 侧边栏 -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h1>探索旅途</h1>
+                <p>管理后台</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    仪表盘
+                </a>
+                <a href="users.html">
+                    <i class="fas fa-users"></i>
+                    用户管理
+                </a>
+                <a href="spots.html">
+                    <i class="fas fa-map-marked-alt"></i>
+                    景点管理
+                </a>
+                <a href="guides.html">
+                    <i class="fas fa-book"></i>
+                    攻略管理
+                </a>
+                <a href="orders.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    订单管理
+                </a>
+                <a href="reviews.html">
+                    <i class="fas fa-comments"></i>
+                    评论管理
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    系统设置
+                </a>
+            </nav>
+        </aside>
+
+        <!-- 主要内容区 -->
+        <main class="admin-main">
+            <!-- 顶部栏 -->
+            <header class="admin-header">
+                <div class="header-search">
+                    <input type="text" placeholder="搜索...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="admin-user">
+                        <img src="../images/admin-avatar.jpg" alt="管理员头像">
+                        <span>管理员</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 仪表盘内容 -->
+            <div class="dashboard-content">
+                <!-- 数据概览卡片 -->
+                <section class="stat-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon users">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>用户总数</h3>
+                            <p class="stat-value">12,345</p>
+                            <p class="stat-change increase">
+                                <i class="fas fa-arrow-up"></i>
+                                12% 较上月
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orders">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>订单总数</h3>
+                            <p class="stat-value">1,234</p>
+                            <p class="stat-change increase">
+                                <i class="fas fa-arrow-up"></i>
+                                8% 较上月
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-yuan-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>总收入</h3>
+                            <p class="stat-value">¥123,456</p>
+                            <p class="stat-change increase">
+                                <i class="fas fa-arrow-up"></i>
+                                15% 较上月
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon guides">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>攻略数量</h3>
+                            <p class="stat-value">567</p>
+                            <p class="stat-change increase">
+                                <i class="fas fa-arrow-up"></i>
+                                5% 较上月
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 图表区域 -->
+                <section class="chart-section">
+                    <div class="chart-container">
+                        <h2>收入趋势</h2>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h2>用户增长</h2>
+                        <canvas id="userGrowthChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- 最新数据列表 -->
+                <section class="recent-data">
+                    <div class="recent-orders">
+                        <h2>最新订单</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>订单号</th>
+                                    <th>用户</th>
+                                    <th>金额</th>
+                                    <th>状态</th>
+                                    <th>时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 数据将通过JavaScript动态加载 -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="recent-reviews">
+                        <h2>最新评价</h2>
+                        <div class="review-list">
+                            <!-- 数据将通过JavaScript动态加载 -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../scripts/admin/dashboard.js"></script>
+</body>
+</html> 

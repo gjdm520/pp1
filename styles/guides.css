@@ -1,0 +1,261 @@
+/* 攻略页面整体布局 */
+.guides-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* 顶部横幅 */
+.guides-banner {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('../images/guides-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.banner-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInDown 0.8s;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s;
+}
+
+.create-guide-btn {
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    animation: fadeIn 1s;
+}
+
+.create-guide-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* 分类导航 */
+.guides-categories {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+}
+
+.category-tabs a {
+    padding: 0.8rem 1.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.category-tabs a.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* 主要内容区布局 */
+.guides-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+}
+
+/* 筛选侧边栏 */
+.guides-filters {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.filter-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray);
+    cursor: pointer;
+}
+
+/* 攻略列表区域 */
+.guides-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.guides-count {
+    color: var(--gray);
+}
+
+.guides-count strong {
+    color: var(--text-color);
+}
+
+.guides-sort select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* 攻略卡片样式 */
+.guides-list {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.guide-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+}
+
+.guide-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.guide-content {
+    padding: 1.5rem;
+}
+
+.guide-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.guide-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.guide-excerpt {
+    color: var(--gray);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.guide-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.author-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.guide-stats {
+    display: flex;
+    gap: 1rem;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* 推荐作者区域 */
+.featured-authors {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid #eee;
+}
+
+.featured-authors h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.authors-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .guides-container {
+        grid-template-columns: 1fr;
+    }
+
+    .guides-filters {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        margin-bottom: 1rem;
+    }
+
+    .guides-toolbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .guides-sort select {
+        width: 100%;
+    }
+} 

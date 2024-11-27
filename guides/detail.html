@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>攻略详情 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/guide-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="../index.html">
+                    <div class="logo-text">探索旅途</div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">首页</a>
+                <a href="../spots/index.html">热门景点</a>
+                <a href="index.html" class="active">旅游攻略</a>
+                <a href="../blindbox/index.html">盲盒旅游</a>
+                <a href="../reviews/index.html">用户评价</a>
+                <a href="../about/index.html">关于我们</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="guide-detail-page">
+        <!-- 攻略头部信息 -->
+        <section class="guide-header">
+            <div class="guide-meta">
+                <div class="guide-category">自由行</div>
+                <div class="guide-stats">
+                    <span><i class="fas fa-eye"></i> 浏览量</span>
+                    <span><i class="fas fa-heart"></i> 点赞数</span>
+                    <span><i class="fas fa-bookmark"></i> 收藏数</span>
+                </div>
+            </div>
+            <h1 class="guide-title">标题将通过JavaScript动态加载</h1>
+            <div class="guide-info">
+                <div class="author-info">
+                    <img src="" alt="" class="author-avatar">
+                    <div class="author-detail">
+                        <div class="author-name">作者名</div>
+                        <div class="publish-time">发布时间</div>
+                    </div>
+                    <button class="follow-btn">关注作者</button>
+                </div>
+                <div class="guide-actions">
+                    <button class="like-btn"><i class="far fa-heart"></i> 点赞</button>
+                    <button class="collect-btn"><i class="far fa-bookmark"></i> 收藏</button>
+                    <button class="share-btn"><i class="fas fa-share-alt"></i> 分享</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 攻略内容区 -->
+        <div class="guide-container">
+            <!-- 左侧主要内容 -->
+            <article class="guide-content">
+                <!-- 封面图 -->
+                <div class="guide-cover">
+                    <img src="" alt="">
+                </div>
+
+                <!-- 目录导航 -->
+                <nav class="guide-nav">
+                    <h2>目录</h2>
+                    <ul class="nav-list">
+                        <!-- 目录项将通过JavaScript动态生成 -->
+                    </ul>
+                </nav>
+
+                <!-- 攻略正文 -->
+                <div class="guide-body">
+                    <!-- 内容将通过JavaScript动态加载 -->
+                </div>
+
+                <!-- 行程地图 -->
+                <section class="route-map">
+                    <h2>行程地图</h2>
+                    <div id="map" class="map-container"></div>
+                </section>
+
+                <!-- 评论区 -->
+                <section class="comments-section">
+                    <h2>评论区</h2>
+                    <div class="comment-form">
+                        <textarea placeholder="写下你的评论..."></textarea>
+                        <button class="submit-comment">发表评论</button>
+                    </div>
+                    <div class="comments-list">
+                        <!-- 评论将通过JavaScript动态加载 -->
+                    </div>
+                </section>
+            </article>
+
+            <!-- 右侧信息栏 -->
+            <aside class="guide-sidebar">
+                <!-- 行程概要 -->
+                <div class="trip-summary">
+                    <h3>行程概要</h3>
+                    <div class="summary-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>行程天数：<strong>5天4晚</strong></span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-coins"></i>
+                        <span>人均预算：<strong>¥3000-5000</strong></span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-users"></i>
+                        <span>适合人群：<strong>情侣/家庭</strong></span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-sun"></i>
+                        <span>最佳季节：<strong>春季/秋季</strong></span>
+                    </div>
+                </div>
+
+                <!-- 目的地天气 -->
+                <div class="weather-info">
+                    <h3>目的地天气</h3>
+                    <div class="weather-forecast">
+                        <!-- 天气信息将通过JavaScript动态加载 -->
+                    </div>
+                </div>
+
+                <!-- 相关攻略 -->
+                <div class="related-guides">
+                    <h3>相关攻略</h3>
+                    <div class="related-list">
+                        <!-- 相关攻略将通过JavaScript动态加载 -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <!-- 页脚复用 -->
+    </footer>
+
+    <!-- 分享弹窗 -->
+    <div class="share-modal" style="display: none;">
+        <div class="modal-content">
+            <h3>分享到</h3>
+            <div class="share-options">
+                <button class="share-option wechat">
+                    <i class="fab fa-weixin"></i>
+                    微信
+                </button>
+                <button class="share-option weibo">
+                    <i class="fab fa-weibo"></i>
+                    微博
+                </button>
+                <button class="share-option qzone">
+                    <i class="fas fa-star"></i>
+                    QQ空间
+                </button>
+                <button class="share-option link">
+                    <i class="fas fa-link"></i>
+                    复制链接
+                </button>
+            </div>
+            <button class="close-modal">关闭</button>
+        </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script src="../scripts/guide-detail.js"></script>
+</body>
+</html> 

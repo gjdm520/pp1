@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盲盒旅行 - 探索旅途</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/blindbox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="../index.html">
+                    <div class="logo-text">探索旅途</div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">首页</a>
+                <a href="../spots/index.html">热门景点</a>
+                <a href="../guides/index.html">旅游攻略</a>
+                <a href="index.html" class="active">盲盒旅游</a>
+                <a href="../reviews/index.html">用户评价</a>
+                <a href="../about/index.html">关于我们</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="blindbox-page">
+        <section class="blindbox-banner">
+            <div class="banner-content">
+                <h1>盲盒旅行</h1>
+                <p>开启一段未知的旅程，让惊喜与冒险相伴</p>
+                <div class="banner-stats">
+                    <div class="stat-item">
+                        <strong>10000+</strong>
+                        <span>成功预订</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>98%</strong>
+                        <span>好评率</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>50+</strong>
+                        <span>目的地</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="box-types">
+            <h2>选择你的盲盒类型</h2>
+            <div class="type-grid">
+                <div class="type-card" data-type="weekend">
+                    <div class="type-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>周末盲盒</h3>
+                    <p>2-3天短途旅行，适合周末出游</p>
+                    <div class="type-price">¥599起</div>
+                </div>
+                <div class="type-card" data-type="holiday">
+                    <div class="type-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>假期盲盒</h3>
+                    <p>4-7天中途旅行，适合节假日</p>
+                    <div class="type-price">¥1999起</div>
+                </div>
+                <div class="type-card" data-type="adventure">
+                    <div class="type-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>探险盲盒</h3>
+                    <p>7天以上深度游，探索未知</p>
+                    <div class="type-price">¥3999起</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="draw-section">
+            <div class="draw-container">
+                <div class="draw-preferences">
+                    <h3>设置你的偏好</h3>
+                    <div class="preference-group">
+                        <label>预算范围</label>
+                        <div class="budget-slider">
+                            <input type="range" min="500" max="10000" step="500" value="2000">
+                            <span class="budget-value">¥2000</span>
+                        </div>
+                    </div>
+                    <div class="preference-group">
+                        <label>出行时间</label>
+                        <input type="date" class="travel-date">
+                    </div>
+                    <div class="preference-group">
+                        <label>偏好主题</label>
+                        <div class="theme-tags">
+                            <label class="theme-tag">
+                                <input type="checkbox" value="culture">
+                                文化探索
+                            </label>
+                            <label class="theme-tag">
+                                <input type="checkbox" value="nature">
+                                自然风光
+                            </label>
+                            <label class="theme-tag">
+                                <input type="checkbox" value="food">
+                                美食之旅
+                            </label>
+                            <label class="theme-tag">
+                                <input type="checkbox" value="photography">
+                                摄影胜地
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="draw-box">
+                    <div class="box-wrapper">
+                        <div class="box-lid"></div>
+                        <div class="box-body"></div>
+                    </div>
+                    <button class="draw-button">开启盲盒</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <h2>精彩案例</h2>
+            <div class="case-grid">
+                <!-- 案例卡片将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2>常见问题</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>盲盒旅行是什么？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        盲盒旅行是一种新颖的旅行方式，在出发前你不知道具体目的地，
+                        我们会根据你的预算和偏好，为你精心安排一次充满惊喜的旅程。
+                    </div>
+                </div>
+                <!-- 更多FAQ项... -->
+            </div>
+        </section>
+    </main>
+
+    <div class="result-modal" style="display: none;">
+        <div class="modal-content">
+            <h2>恭喜！你抽中了</h2>
+            <div class="destination-info">
+                <!-- 目的地信息将通过JavaScript动态加载 -->
+            </div>
+            <div class="modal-actions">
+                <button class="confirm-btn">确认预订</button>
+                <button class="redraw-btn">重新抽取</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <!-- 页脚复用 -->
+    </footer>
+
+    <script src="../scripts/blindbox.js"></script>
+</body>
+</html> 
