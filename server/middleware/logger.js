@@ -144,4 +144,38 @@ exports.cleanupLogs = async (days = 30) => {
 };
 
 // 每天执行一次日志清理
-setInterval(exports.cleanupLogs, 24 * 60 * 60 * 1000); 
+setInterval(exports.cleanupLogs, 24 * 60 * 60 * 1000);
+
+// 性能日志中间件
+exports.performanceLogger = (req, res, next) => {
+    const startTime = process.hrtime();
+
+    // 监听response finish事件
+    res.on('finish', () => {
+        const diff = process.hrtime(startTime);
+        const duration = (diff[0] * 1e3 + diff[1] * 1e-6).toFixed(3);
+
+        // 记录性能数据
+        if (duration > 1000) { // 记录响应时间超过1秒的请求
+            const logData = {
+                timestamp: new Date(),
+                duration,
+                method: req.method,
+                path: req.path,
+                query: req.query,
+                userId: req.user?.id
+            };
+
+            logger.warn('Slow Request', logData);
+
+            Log.create({
+                type: 'performance',
+                data: logData
+            }).catch(err => {
+                logger.error('性能日志记录失败:', err);
+            });
+        }
+    });
+
+    next();
+}; 

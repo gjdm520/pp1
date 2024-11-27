@@ -1,146 +1,189 @@
 const jwt = require('jsonwebtoken');
+const config = require('../utils/config');
+const response = require('../utils/response');
 const User = require('../models/user');
+const Token = require('../models/token');
+const logger = require('../utils/logger');
 
-// 认证中间件
-exports.auth = async (req, res, next) => {
+// 验证JWT令牌
+exports.verifyToken = async (req, res, next) => {
     try {
-        // 获取token
-        const token = req.header('Authorization')?.replace('Bearer ', '');
+        // 从请求头获取token
+        const token = req.headers.authorization?.replace('Bearer ', '');
         if (!token) {
-            return res.status(401).json({
-                success: false,
-                message: '请先登录'
-            });
+            return response.unauthorized(res);
         }
 
         // 验证token
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, config.jwt.secret);
         
-        // 查找用户
-        const user = await User.findById(decoded.userId);
+        // 检查token是否在黑名单中
+        const isBlacklisted = await Token.exists({
+            token,
+            type: 'blacklist'
+        });
+
+        if (isBlacklisted) {
+            return response.unauthorized(res, 'token已失效');
+        }
+
+        // 获取用户信息
+        const user = await User.findById(decoded.userId).select('-password');
         if (!user) {
-            return res.status(401).json({
-                success: false,
-                message: '用户不存在'
-            });
+            return response.unauthorized(res, '用户不存在');
         }
 
         // 将用户信息添加到请求对象
-        req.user = decoded;
+        req.user = user;
+        req.token = token;
         next();
 
     } catch (error) {
+        if (error.name === 'JsonWebTokenError') {
+            return response.unauthorized(res, '无效的token');
+        }
         if (error.name === 'TokenExpiredError') {
-            return res.status(401).json({
-                success: false,
-                message: '登录已过期，请重新登录'
-            });
+            return response.unauthorized(res, 'token已过期');
         }
-
-        res.status(401).json({
-            success: false,
-            message: '认证失败',
-            error: error.message
-        });
+        next(error);
     }
 };
 
-// 管理员权限中间件
-exports.admin = async (req, res, next) => {
-    try {
-        const user = await User.findById(req.user.userId);
-        
-        if (user.role !== 'admin') {
-            return res.status(403).json({
-                success: false,
-                message: '需要管理员权限'
-            });
-        }
-
-        next();
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: '权限验证失败',
-            error: error.message
-        });
-    }
-};
-
-// 商家权限中间件
-exports.business = async (req, res, next) => {
-    try {
-        const user = await User.findById(req.user.userId);
-        
-        if (user.role !== 'business' && user.role !== 'admin') {
-            return res.status(403).json({
-                success: false,
-                message: '需要商家权限'
-            });
-        }
-
-        next();
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: '权限验证失败',
-            error: error.message
-        });
-    }
-};
-
-// 访问频率限制中间件
-exports.rateLimit = (limit, minutes) => {
-    const requests = new Map();
-
+// 检查用户角色
+exports.checkRole = (...roles) => {
     return (req, res, next) => {
-        const ip = req.ip;
-        const now = Date.now();
-        const userRequests = requests.get(ip) || [];
-
-        // 清理过期请求
-        const validRequests = userRequests.filter(time => now - time < minutes * 60 * 1000);
-        
-        if (validRequests.length >= limit) {
-            return res.status(429).json({
-                success: false,
-                message: '请求过于频繁，请稍后再试'
-            });
+        if (!req.user) {
+            return response.unauthorized(res);
         }
 
-        validRequests.push(now);
-        requests.set(ip, validRequests);
+        if (!roles.includes(req.user.role)) {
+            return response.forbidden(res);
+        }
 
         next();
     };
 };
 
-// 日志中间件
-exports.logger = async (req, res, next) => {
-    const start = Date.now();
+// 检查资源所有权
+exports.checkOwnership = (modelName) => {
+    return async (req, res, next) => {
+        try {
+            const Model = require(`../models/${modelName}`);
+            const resource = await Model.findById(req.params.id);
 
-    res.on('finish', async () => {
-        const duration = Date.now() - start;
+            if (!resource) {
+                return response.notFound(res);
+            }
+
+            if (resource.user?.toString() !== req.user._id.toString()) {
+                return response.forbidden(res);
+            }
+
+            req.resource = resource;
+            next();
+
+        } catch (error) {
+            next(error);
+        }
+    };
+};
+
+// 限制访问频率
+exports.rateLimit = (options = {}) => {
+    const {
+        windowMs = 15 * 60 * 1000, // 15分钟
+        max = 100, // 最大请求数
+        message = '请求过于频繁，请稍后再试'
+    } = options;
+
+    const cache = require('../utils/cache');
+    const CACHE_PREFIX = 'rateLimit:';
+
+    return async (req, res, next) => {
+        const key = `${CACHE_PREFIX}${req.ip}`;
 
         try {
-            await Log.create({
-                level: 'info',
-                module: 'api',
-                message: `${req.method} ${req.path}`,
-                ip: req.ip,
-                userAgent: req.headers['user-agent'],
-                method: req.method,
-                path: req.path,
-                statusCode: res.statusCode,
-                responseTime: duration,
-                user: req.user?.userId
+            // 获取当前时间窗口的请求次数
+            let current = await cache.get(key) || 0;
+
+            if (current >= max) {
+                return response.error(res, message, 429);
+            }
+
+            // 增加请求次数
+            await cache.set(key, current + 1, Math.ceil(windowMs / 1000));
+            next();
+
+        } catch (error) {
+            logger.error('访问频率限制检查失败:', error);
+            next();
+        }
+    };
+};
+
+// 记录用户活动
+exports.trackActivity = async (req, res, next) => {
+    if (req.user) {
+        try {
+            await User.findByIdAndUpdate(req.user._id, {
+                lastActiveAt: new Date(),
+                lastIp: req.ip
             });
         } catch (error) {
-            console.error('日志记录失败:', error);
+            logger.error('记录用户活动失败:', error);
         }
-    });
+    }
+    next();
+};
+
+// 检查用户状态
+exports.checkUserStatus = async (req, res, next) => {
+    if (!req.user) {
+        return next();
+    }
+
+    if (req.user.status === 'banned') {
+        return response.forbidden(res, '账号已被禁用');
+    }
+
+    if (req.user.status === 'inactive') {
+        return response.forbidden(res, '请先激活账号');
+    }
 
     next();
+};
+
+// 刷新令牌
+exports.refreshToken = async (req, res, next) => {
+    const refreshToken = req.body.refreshToken;
+    if (!refreshToken) {
+        return response.unauthorized(res, '请提供刷新令牌');
+    }
+
+    try {
+        const decoded = jwt.verify(refreshToken, config.jwt.refreshSecret);
+        const user = await User.findById(decoded.userId);
+
+        if (!user) {
+            return response.unauthorized(res, '用户不存在');
+        }
+
+        // 生成新的访问令牌
+        const accessToken = jwt.sign(
+            { userId: user._id },
+            config.jwt.secret,
+            { expiresIn: config.jwt.accessExpire }
+        );
+
+        res.json({
+            success: true,
+            data: { accessToken }
+        });
+
+    } catch (error) {
+        if (error.name === 'TokenExpiredError') {
+            return response.unauthorized(res, '刷新令牌已过期');
+        }
+        next(error);
+    }
 }; 
