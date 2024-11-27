@@ -1,15 +1,7 @@
 const Redis = require('ioredis');
 const crypto = require('crypto');
-const cache = require('../utils/cache');
+const { redis } = require('../utils/cache');
 const logger = require('../utils/logger');
-
-// 创建Redis客户端
-const redis = new Redis({
-    host: process.env.REDIS_HOST || 'localhost',
-    port: process.env.REDIS_PORT || 6379,
-    password: process.env.REDIS_PASSWORD,
-    keyPrefix: 'cache:'
-});
 
 // 生成缓存键
 const generateCacheKey = (req, prefix) => {
@@ -47,7 +39,7 @@ exports.cacheMiddleware = (options = {}) => {
 
         try {
             // 尝试获取缓存
-            const cached = await cache.get(key);
+            const cached = await redis.get(key);
             if (cached) {
                 logger.debug('Cache hit:', key);
                 return res.json(cached);
@@ -60,7 +52,7 @@ exports.cacheMiddleware = (options = {}) => {
             res.json = function(data) {
                 // 缓存成功的响应
                 if (data.success !== false) {
-                    cache.set(key, data, expire).catch(err => {
+                    redis.set(key, data, expire).catch(err => {
                         logger.error('Cache set error:', err);
                     });
                 }
@@ -80,7 +72,7 @@ exports.cacheMiddleware = (options = {}) => {
 exports.clearCache = (pattern) => {
     return async (req, res, next) => {
         try {
-            await cache.delMulti(pattern);
+            await redis.delMulti(pattern);
             next();
         } catch (error) {
             logger.error('Cache clear error:', error);
@@ -101,7 +93,7 @@ exports.warmupCache = (options = {}) => {
         try {
             const key = getKey(req);
             const data = await getData(req);
-            await cache.set(key, data, expire);
+            await redis.set(key, data, expire);
             next();
         } catch (error) {
             logger.error('Cache warmup error:', error);
@@ -127,7 +119,7 @@ exports.cacheTag = (tag) => {
         res.json = function(data) {
             if (data.success !== false) {
                 const key = generateCacheKey(req, 'tag:' + tag);
-                cache.sadd(key, req.originalUrl).catch(err => {
+                redis.sadd(key, req.originalUrl).catch(err => {
                     logger.error('Cache tag error:', err);
                 });
             }
@@ -142,10 +134,10 @@ exports.clearCacheByTag = (tag) => {
     return async (req, res, next) => {
         try {
             const key = 'tag:' + tag;
-            const urls = await cache.smembers(key);
+            const urls = await redis.smembers(key);
             await Promise.all([
-                cache.del(key),
-                ...urls.map(url => cache.del('api:' + url))
+                redis.del(key),
+                ...urls.map(url => redis.del('api:' + url))
             ]);
             next();
         } catch (error) {
@@ -175,8 +167,21 @@ exports.cacheStats = () => {
     };
 };
 
-// 定时任务：每天清理过期缓存
-setInterval(exports.cleanupCache, 24 * 60 * 60 * 1000);
+// 清理过期缓存函数
+exports.cleanupCache = async () => {
+    try {
+        const keys = await redis.keys('cache:*');
+        for (const key of keys) {
+            const ttl = await redis.ttl(key);
+            if (ttl <= 0) {
+                await redis.del(key);
+            }
+        }
+        logger.info('清理过期缓存完成');
+    } catch (error) {
+        logger.error('清理过期缓存失败:', error);
+    }
+};
 
 // 监听Redis连接事件
 redis.on('connect', () => {

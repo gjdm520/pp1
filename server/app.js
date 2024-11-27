@@ -66,8 +66,16 @@ app.use((req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    
+    // 设置缓存清理定时任务
+    const { cleanupCache } = require('./middleware/cache');
+    setInterval(() => {
+        cleanupCache().catch(err => {
+            console.error('定时清理缓存失败:', err);
+        });
+    }, 24 * 60 * 60 * 1000);
 });
 
 module.exports = app; 
